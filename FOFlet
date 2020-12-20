@@ -7,18 +7,74 @@ import matplotlib.pyplot as plt
 
 from scipy.io.wavfile import write
 
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtGui, QtCore, QtWidgets, uic
 import sys
 
+#############################################
+# User Functions
+#############################################
+def foflet_str(_foflet1, _foflet2, _foflet3, _foflet4, _foflet5):
+    pr_str = '''
+=========================================================
+|       foflet1 | foflet2 | foflet3 | foflet4 | foflet5 |
+=========================================================
+| Fc || %7d | %7d | %7d | %7d | %7d |
+---------------------------------------------------------
+| k1 || %7.5f | %7.5f | %7.5f | %7.5f | %7.5f |
+---------------------------------------------------------
+| BW || %7d | %7d | %7d | %7d | %7d |
+=========================================================
+''' % (_foflet1.Fc, _foflet2.Fc, _foflet3.Fc, _foflet4.Fc, _foflet5.Fc,
+       _foflet1.k1, _foflet2.k1, _foflet3.k1, _foflet4.k1, _foflet5.k1,
+       _foflet1.BW, _foflet2.BW, _foflet3.BW, _foflet4.BW, _foflet5.BW)
+    return pr_str
+
+#############################################
+#
+# Declare the 5 foflets for the application
+# globally so that all aspects of class and
+# main can reach them
+#
+#############################################
+Fs = 44100
+foflet1 = FOFlet.FOFlet()
+foflet2 = FOFlet.FOFlet()
+foflet3 = FOFlet.FOFlet()
+foflet4 = FOFlet.FOFlet()
+foflet5 = FOFlet.FOFlet()
+
+
+#############################################
+# QT Stuff
+#############################################
 class Ui(QtWidgets.QMainWindow):
+    # Init the class, build the connections, etc
     def __init__(self):
         super(Ui, self).__init__()
+        # load UI file
         uic.loadUi('./ui/MainWindow.ui', self)
+        # create timer
+        self.timeout = int(1000/self.Impulse_Slider.value())
+        self.timer = QtCore.QTimer(self)
+
+        self.timer.timeout.connect(self.generateFOFlets)
+        self.timer.start(self.timeout)
         self.show()
 
+    # Do this at each new impulse
+    def generateFOFlets(self):
+        self.timeout = int(1000/self.Impulse_Slider.value())
+        self.timer.start(self.timeout)
+        #self.infoBox.insertPlainText(foflet_str(foflet1, foflet2, foflet3, foflet4, foflet5))
+        self.infoBox.insertPlainText(f'{self.timeout}\n')
+        self.infoBox.moveCursor(QtGui.QTextCursor.End)
 
-#foflet1 = FOFlet.FOFlet()
-app = QtWidgets.QApplication(sys.argv)
-app.setStyle('kvantum')
-window = Ui()
-app.exec_()
+
+#############################################
+# this will be main.
+#############################################
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    app.setStyle('qt5ct-style')
+    window = Ui()
+    app.exec_()

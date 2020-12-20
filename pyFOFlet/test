@@ -11,13 +11,13 @@ def prt_str(foflet):
     pr_str = '''
 FOFlet Parameters:
 ==================
-alpha: | %f
-beta:  | %f
-k1:    | %f
-BW:    | %d
-Fc:    | %d
-Fs:    | %d
-Ts:    | %f
+alpha: | %8.5f
+beta:  | %8.5f
+k1:    | %8.5f
+BW:    | %8d
+Fc:    | %8d
+Fs:    | %8d
+Ts:    | %8.5f
 ==================
 ''' % (foflet.alpha, foflet.beta, foflet.k1, foflet.BW, foflet.Fc, foflet.Fs, foflet.Ts)
 
@@ -26,7 +26,7 @@ Ts:    | %f
 imp = FOFlet.impulse()
 imp.set_freq(100)
 
-Fs = 192000
+Fs = 44100
 sd.default.samplerate = Fs
 
 foflet = FOFlet.FOFlet()
@@ -36,10 +36,10 @@ foflet.update_FOFlet(10, 100, .002, 640, Fs, imp)
 prt_str(foflet)
 
 foflet2 = FOFlet.FOFlet()
-foflet2.update_FOFlet(10, 120, .004, 1000, Fs, imp)
+foflet2.update_FOFlet(10, 120, .004, 1220, Fs, imp)
 
 foflet3 = FOFlet.FOFlet()
-foflet3.update_FOFlet(10, 100, .0015, 2040, Fs, imp)
+foflet3.update_FOFlet(10, 100, .0015, 2240, Fs, imp)
 
 foflet4 = FOFlet.FOFlet()
 foflet4.update_FOFlet(10, 80, .002, 3050, Fs, imp)
@@ -62,9 +62,11 @@ f,t,Sxx = sp.spectrogram(out, nperseg=int(Fs/240), fs=Fs)
 plt.subplot(313)
 plt.pcolormesh(t, f, Sxx, shading='gouraud')
 plt.ylabel('Frequency [Hz]')
+plt.ylim(top=4000)
 plt.xlabel('Time [sec]')
 plt.savefig('output.png')
 
+out = np.append(out, out)
 out = np.append(out, out)
 out = np.append(out, out)
 out = np.append(out, out)
