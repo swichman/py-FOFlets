@@ -36,7 +36,7 @@
           <enum>QLayout::SetNoConstraint</enum>
          </property>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QPushButton" name="pushButton_10">
+          <widget class="QPushButton" name="main_enable_toggle">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -66,13 +66,16 @@
             <string notr="true">QPushButton {
 	border-radius: 2px;
 	background-color: #990000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
 }</string>
            </property>
            <property name="text">
             <string>SOUND ON</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -329,6 +332,9 @@ QPushButton:pressed {
                <property name="text">
                 <string>ON</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -464,6 +470,9 @@ QPushButton:pressed {
                </property>
                <property name="text">
                 <string>ON</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -601,6 +610,9 @@ QPushButton:pressed {
                <property name="text">
                 <string>ON</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -737,6 +749,9 @@ QPushButton:pressed {
                <property name="text">
                 <string>ON</string>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -872,6 +887,9 @@ QPushButton:pressed {
                </property>
                <property name="text">
                 <string>ON</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>

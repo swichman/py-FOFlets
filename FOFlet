@@ -60,12 +60,68 @@ class Ui(QtWidgets.QMainWindow):
         # create timer
         self.timeout = int(1000/self.Impulse_Slider.value())
         self.timer = QtCore.QTimer(self)
-
         self.timer.timeout.connect(self.generateFOFlets)
         self.timer.start(self.timeout)
+
+        # init class variables
+        self.main_toggled = False
+
+        # make buttons toggle
+        self.main_enable_toggle.clicked.connect(self.toggle_main)
+        self.f1_toggle.clicked.connect(self.toggle_f1)
+        self.f2_toggle.clicked.connect(self.toggle_f2)
+        self.f3_toggle.clicked.connect(self.toggle_f3)
+        self.f4_toggle.clicked.connect(self.toggle_f4)
+        self.f5_toggle.clicked.connect(self.toggle_f5)
+
         self.show()
 
+    def toggle_main(self):
+        if self.main_enable_toggle.isChecked():
+            self.main_enable_toggle.setStyleSheet("background-color: #FF0000;")
+            if self.f1_toggle.isChecked():
+                self.f1_toggle.setStyleSheet("background-color: #FF0000;")
+            if self.f2_toggle.isChecked():
+                self.f2_toggle.setStyleSheet("background-color: #FF0000;")
+            if self.f3_toggle.isChecked():
+                self.f3_toggle.setStyleSheet("background-color: #FF0000;")
+            if self.f4_toggle.isChecked():
+                self.f4_toggle.setStyleSheet("background-color: #FF0000;")
+            if self.f5_toggle.isChecked():
+                self.f5_toggle.setStyleSheet("background-color: #FF0000;")
+        else:
+            self.main_enable_toggle.setStyleSheet("background-color: #990000;")
+            self.f1_toggle.setStyleSheet("background-color: #990000;")
+            self.f2_toggle.setStyleSheet("background-color: #990000;")
+            self.f3_toggle.setStyleSheet("background-color: #990000;")
+            self.f4_toggle.setStyleSheet("background-color: #990000;")
+            self.f5_toggle.setStyleSheet("background-color: #990000;")
 
+    def toggle_f1(self):
+        if self.main_enable_toggle.isChecked() and self.f1_toggle.isChecked():
+            self.f1_toggle.setStyleSheet("background-color: #FF0000;")
+        if self.main_enable_toggle.isChecked() and not self.f1_toggle.isChecked():
+            self.f1_toggle.setStyleSheet("background-color: #990000;")
+    def toggle_f2(self):
+        if self.main_enable_toggle.isChecked() and self.f2_toggle.isChecked():
+            self.f2_toggle.setStyleSheet("background-color: #FF0000;")
+        if self.main_enable_toggle.isChecked() and not self.f2_toggle.isChecked():
+            self.f2_toggle.setStyleSheet("background-color: #990000;")
+    def toggle_f3(self):
+        if self.main_enable_toggle.isChecked() and self.f3_toggle.isChecked():
+            self.f3_toggle.setStyleSheet("background-color: #FF0000;")
+        if self.main_enable_toggle.isChecked() and not self.f3_toggle.isChecked():
+            self.f3_toggle.setStyleSheet("background-color: #990000;")
+    def toggle_f4(self):
+        if self.main_enable_toggle.isChecked() and self.f4_toggle.isChecked():
+            self.f4_toggle.setStyleSheet("background-color: #FF0000;")
+        if self.main_enable_toggle.isChecked() and not self.f4_toggle.isChecked():
+            self.f4_toggle.setStyleSheet("background-color: #990000;")
+    def toggle_f5(self):
+        if self.main_enable_toggle.isChecked() and self.f5_toggle.isChecked():
+            self.f5_toggle.setStyleSheet("background-color: #FF0000;")
+        if self.main_enable_toggle.isChecked() and not self.f5_toggle.isChecked():
+            self.f5_toggle.setStyleSheet("background-color: #990000;")
 
     # Do this at each new impulse
     def generateFOFlets(self):
