@@ -35,13 +35,14 @@ class FOFlet:
     def set_Fs(self, Fs_val):
         self.Fs = Fs_val
 
-    def update_FOFlet(self, alpha, BW, k1, Fc, Fs, impulse):
-        self.set_Fs(Fs)
-        self.set_k1(k1*self.Fs)
-        self.set_beta(np.pi/self.k1)
-        self.set_alpha(alpha)
-        self.set_BW(BW)
-        self.set_Fc(Fc)
+    def update_FOFlet(self, Fs, impulse):
+    #def update_FOFlet(self, alpha, BW, k1, Fc, Fs, impulse):
+        # self.set_Fs(Fs)
+        # self.set_k1(k1*self.Fs)
+        # self.set_beta(np.pi/self.k1)
+        # self.set_alpha(alpha)
+        # self.set_BW(BW)
+        # self.set_Fc(Fc)
 
         tmp = []
         for i in range(0,int(self.k1)):
@@ -49,7 +50,7 @@ class FOFlet:
             exponential = np.exp((-self.BW*np.pi*i)/self.Fs)
             msg = np.sin((2*np.pi*self.Fc*i)/Fs)
             tmp.append( attack_env*exponential*msg )
-        for i in range(int(self.k1)+1, int(Fs/impulse.freq)):
+        for i in range(int(self.k1)+1, int(Fs/impulse)):
             decay_env = np.exp((-self.BW*np.pi*i)/self.Fs)
             msg = np.sin((2*np.pi*self.Fc*i)/Fs)
             tmp.append(decay_env * msg)
