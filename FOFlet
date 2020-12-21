@@ -156,6 +156,8 @@ class Ui(QtWidgets.QMainWindow):
         foflet3.update_FOFlet(Fs, self.Impulse_Slider.value())
         foflet4.update_FOFlet(Fs, self.Impulse_Slider.value())
         foflet5.update_FOFlet(Fs, self.Impulse_Slider.value())
+        vol = self.Volume_Slider.value()/100
+        formant = (foflet1.FOFlet + foflet2.FOFlet + foflet3.FOFlet + foflet4.FOFlet + foflet5.FOFlet)*vol
 
         self.infoBox.clear()
         self.infoBox.insertPlainText(foflet_str(foflet1, foflet2, foflet3, foflet4, foflet5))
