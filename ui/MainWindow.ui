@@ -337,34 +337,6 @@ QPushButton:pressed {
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="f1_led">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	border-radius: 10px;
-	background-color: #770000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
           </layout>
@@ -473,34 +445,6 @@ QPushButton:pressed {
                </property>
                <property name="checkable">
                 <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="f2_led">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	border-radius: 10px;
-	background-color: #770000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>
@@ -615,34 +559,6 @@ QPushButton:pressed {
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="f3_led">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	border-radius: 10px;
-	background-color: #770000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
           </layout>
@@ -754,34 +670,6 @@ QPushButton:pressed {
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QPushButton" name="f4_led">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	border-radius: 10px;
-	background-color: #770000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
           </layout>
@@ -890,34 +778,6 @@ QPushButton:pressed {
                </property>
                <property name="checkable">
                 <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="f5_led">
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	border-radius: 10px;
-	background-color: #770000;
-}
-QPushButton:pressed {
-    background-color: #FF0000;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>

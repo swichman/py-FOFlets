@@ -64,7 +64,7 @@ class Ui(QtWidgets.QMainWindow):
         self.timer.start(self.timeout)
 
         # init class variables
-        self.main_toggled = False
+        #self.main_toggled = False
 
         # make buttons toggle
         self.main_enable_toggle.clicked.connect(self.toggle_main)
@@ -78,7 +78,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def toggle_main(self):
         if self.main_enable_toggle.isChecked():
-            self.main_enable_toggle.setStyleSheet("background-color: #FF0000;")
+            self.main_enable_toggle.setStyleSheet("border-radius: 2px;background-color: #FF0000;")
             if self.f1_toggle.isChecked():
                 self.f1_toggle.setStyleSheet("background-color: #FF0000;")
             if self.f2_toggle.isChecked():
@@ -90,7 +90,7 @@ class Ui(QtWidgets.QMainWindow):
             if self.f5_toggle.isChecked():
                 self.f5_toggle.setStyleSheet("background-color: #FF0000;")
         else:
-            self.main_enable_toggle.setStyleSheet("background-color: #990000;")
+            self.main_enable_toggle.setStyleSheet("border-radius: 2px;background-color: #990000;")
             self.f1_toggle.setStyleSheet("background-color: #990000;")
             self.f2_toggle.setStyleSheet("background-color: #990000;")
             self.f3_toggle.setStyleSheet("background-color: #990000;")
