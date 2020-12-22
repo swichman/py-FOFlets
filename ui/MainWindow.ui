@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1203</width>
-    <height>597</height>
+    <height>894</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@
             <bool>true</bool>
            </property>
            <property name="checked">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -253,7 +253,7 @@
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="f1_fc">
              <property name="maximum">
-              <number>3500</number>
+              <number>5000</number>
              </property>
              <property name="singleStep">
               <number>10</number>
@@ -280,8 +280,11 @@
                <height>100</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
              <property name="maximum">
-              <number>99</number>
+              <number>100</number>
              </property>
             </widget>
            </item>
@@ -373,7 +376,7 @@ QPushButton:pressed {
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="f2_fc">
              <property name="maximum">
-              <number>3500</number>
+              <number>5000</number>
              </property>
              <property name="singleStep">
               <number>10</number>
@@ -400,8 +403,11 @@ QPushButton:pressed {
                <height>100</height>
               </size>
              </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
              <property name="maximum">
-              <number>99</number>
+              <number>100</number>
              </property>
             </widget>
            </item>
@@ -493,7 +499,7 @@ QPushButton:pressed {
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="f3_fc">
              <property name="maximum">
-              <number>3500</number>
+              <number>5000</number>
              </property>
              <property name="singleStep">
               <number>10</number>
@@ -519,6 +525,12 @@ QPushButton:pressed {
                <width>100</width>
                <height>100</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
              </property>
             </widget>
            </item>
@@ -610,7 +622,7 @@ QPushButton:pressed {
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="f4_fc">
              <property name="maximum">
-              <number>3500</number>
+              <number>5000</number>
              </property>
              <property name="singleStep">
               <number>10</number>
@@ -636,6 +648,12 @@ QPushButton:pressed {
                <width>100</width>
                <height>100</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
              </property>
             </widget>
            </item>
@@ -727,7 +745,7 @@ QPushButton:pressed {
            <item alignment="Qt::AlignHCenter">
             <widget class="QSlider" name="f5_fc">
              <property name="maximum">
-              <number>3500</number>
+              <number>5000</number>
              </property>
              <property name="singleStep">
               <number>10</number>
@@ -753,6 +771,12 @@ QPushButton:pressed {
                <width>100</width>
                <height>100</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
              </property>
             </widget>
            </item>
@@ -859,9 +883,19 @@ QPushButton:pressed {
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="PlotWidget" native="true">
+       <widget class="PlotWidget" name="temporalPlot" native="true">
         <layout class="QGridLayout" name="gridLayout_5"/>
        </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="PlotWidget" name="spectralPlot" native="true"/>
       </item>
      </layout>
     </item>
@@ -879,6 +913,14 @@ QPushButton:pressed {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
