@@ -14,6 +14,8 @@ from scipy.io.wavfile import write
 from PyQt5 import QtGui, QtCore, QtWidgets, uic
 import sys
 
+import threading
+
 #############################################
 # User Functions
 #############################################
@@ -185,6 +187,14 @@ class Ui(QtWidgets.QMainWindow):
         if self.main_enable_toggle.isChecked() and not self.f5_toggle.isChecked():
             self.f5_toggle.setStyleSheet("background-color: #990000;")
 
+    def sound_thread(self, formant):
+        for i in range(1,13):
+            formant = np.append(formant, formant)
+
+        formant = signal.lfilter(lpf,1,formant)
+        # play the formant
+        sd.play(formant, Fs)
+
     #######################################
     #
     # Do this at each new impulse
@@ -265,28 +275,15 @@ class Ui(QtWidgets.QMainWindow):
         # self.spectralPlot.setXRange(0, 6000)
         # self.spectralPlot.plot(f, spec_plot)
 
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = np.append(formant, formant)
-        formant = signal.lfilter(lpf,1,formant)
-        # play the formant
-        sd.play(formant, Fs)
         f, spec_plot = signal.periodogram(formant,
                                     Fs, scaling='spectrum',
                                     return_onesided=True,
                                     nfft = 1024 )
         self.spectralPlot.plot(f, spec_plot)
-        def plot_wave(self):
-            i = 0
-
-
+        #x = threading.Thread(target=self.sound_thread,
+        #                     args=(formant,))
+        #x.start()
+        self.sound_thread(formant)
 
 #############################################
 # this will be main.

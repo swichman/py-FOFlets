@@ -48,11 +48,14 @@ class FOFlet:
             exponential = np.exp((-self.BW*np.pi*i)/self.Fs)
             msg = np.sin((2*np.pi*self.Fc*i)/Fs)
             tmp.append( attack_env*exponential*msg )
-        for i in range(int(self.k1*self.Fs)+1, int(Fs/impulse)+1):
+        for i in range(int(self.k1*self.Fs), int(Fs/impulse)+1):
             decay_env = np.exp((-self.BW*np.pi*i)/self.Fs)
             msg = np.sin((2*np.pi*self.Fc*i)/Fs)
             tmp.append(decay_env * msg)
         self.FOFlet = np.asarray(tmp)
+        imp = np.zeros(int(Fs/impulse))
+        imp[0] = 1
+        self.FOFlet = self.synthesize(imp)
 
     def plot_FOFlet(self):
         plt.plot(self.FOFlet)
