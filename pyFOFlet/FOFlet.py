@@ -52,10 +52,8 @@ class FOFlet:
             decay_env = np.exp((-self.BW*np.pi*i)/self.Fs)
             msg = np.sin((2*np.pi*self.Fc*i)/Fs)
             tmp.append(decay_env * msg)
-        self.FOFlet = np.asarray(tmp)
-        imp = np.zeros(int(Fs/impulse))
-        imp[0] = 1
-        self.FOFlet = self.synthesize(imp)
+        self.FOFlet = np.asarray(tmp, dtype=np.float32)
+
 
     def plot_FOFlet(self):
         plt.plot(self.FOFlet)

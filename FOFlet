@@ -10,6 +10,7 @@ import pyqtgraph as pg
 
 import sounddevice as sd
 from scipy.io.wavfile import write
+import simpleaudio
 
 from PyQt5 import QtGui, QtCore, QtWidgets, uic
 import sys
@@ -46,12 +47,13 @@ def foflet_str(_foflet1, _foflet2, _foflet3, _foflet4, _foflet5):
 # main can reach them
 #
 #############################################
-Fs = 44100
 foflet1 = FOFlet.FOFlet()
 foflet2 = FOFlet.FOFlet()
 foflet3 = FOFlet.FOFlet()
 foflet4 = FOFlet.FOFlet()
 foflet5 = FOFlet.FOFlet()
+formant = (foflet1.FOFlet + foflet2.FOFlet + foflet3.FOFlet + foflet4.FOFlet + foflet5.FOFlet)
+
 
 #############################################
 #
@@ -77,8 +79,19 @@ foflet5.set_BW(150)
 # to smooth impulses
 #
 #############################################
+Fs = 44100
 lpf = signal.firls(9, (0,.001,.002,.12,.15,1),(0,0,1,1,0,0))
-sd.default.samplerate = Fs
+
+def formant_callback(outdata, frame_count, time_info, status):
+        if status:
+            print(status)
+        # remainder = len(buffer) - idx
+        # if remainder == 0:
+        #     loop.call_soon_threadsafe(event.set)
+        #     raise sd.CallbackStop
+        #valid_frames = frame_count if remainder >= frame_count else remainder
+        outdata[:] = formant
+stream = sd.OutputStream(samplerate=44100, dtype=np.float32, callback=formant_callback)
 
 #############################################
 # QT Stuff
@@ -187,13 +200,12 @@ class Ui(QtWidgets.QMainWindow):
         if self.main_enable_toggle.isChecked() and not self.f5_toggle.isChecked():
             self.f5_toggle.setStyleSheet("background-color: #990000;")
 
-    def sound_thread(self, formant):
-        for i in range(1,13):
-            formant = np.append(formant, formant)
-
-        formant = signal.lfilter(lpf,1,formant)
-        # play the formant
-        sd.play(formant, Fs)
+    def fade_formant(self, formant):
+        #print(len(formant))i
+        for i in range(0,100):
+            coeff = np.exp((i/100)*np.log(2)) - 1
+            formant[len(formant) - i - 1] = coeff * formant[len(formant) - i - 1]
+        return formant
 
     #######################################
     #
@@ -253,10 +265,17 @@ class Ui(QtWidgets.QMainWindow):
         vol = self.Volume_Slider.value()/100
         # Create complex formant from FOFlets
         formant = (foflet1.FOFlet + foflet2.FOFlet + foflet3.FOFlet + foflet4.FOFlet + foflet5.FOFlet)
+
+
         # normalize the formant
         formant = formant/np.max(np.abs(formant) + .00001) * vol
+        formant = self.fade_formant(formant)
+
+        if self.main_enable_toggle.isChecked():
+            stream.start()
 
         if not self.main_enable_toggle.isChecked():
+            stream.stop()
             formant = formant*0
 
         self.infoBox.clear()
@@ -266,24 +285,15 @@ class Ui(QtWidgets.QMainWindow):
         self.temporalPlot.clear()
         self.spectralPlot.clear()
         # plot time-domain signal
-        self.temporalPlot.setXRange(0, Fs/self.Impulse_Slider.value())
+        self.temporalPlot.setXRange(0, len(formant))
         self.temporalPlot.plot(formant)
-        # f, spec_plot = signal.periodogram(formant,
-        #                             Fs, scaling='spectrum',
-        #                             return_onesided=True,
-        #                             nfft = 1024 )
-        # self.spectralPlot.setXRange(0, 6000)
-        # self.spectralPlot.plot(f, spec_plot)
-
         f, spec_plot = signal.periodogram(formant,
                                     Fs, scaling='spectrum',
                                     return_onesided=True,
                                     nfft = 1024 )
+        self.spectralPlot.setXRange(0, 6000)
         self.spectralPlot.plot(f, spec_plot)
-        #x = threading.Thread(target=self.sound_thread,
-        #                     args=(formant,))
-        #x.start()
-        self.sound_thread(formant)
+
 
 #############################################
 # this will be main.
