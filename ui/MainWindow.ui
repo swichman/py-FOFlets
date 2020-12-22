@@ -309,7 +309,7 @@
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="f1_toggle">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -317,7 +317,13 @@
                <property name="minimumSize">
                 <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -395,7 +401,7 @@ QPushButton:pressed {
               </size>
              </property>
              <property name="maximum">
-              <number>200</number>
+              <number>99</number>
              </property>
             </widget>
            </item>
@@ -413,6 +419,9 @@ QPushButton:pressed {
                <height>100</height>
               </size>
              </property>
+             <property name="maximum">
+              <number>200</number>
+             </property>
             </widget>
            </item>
            <item>
@@ -420,7 +429,7 @@ QPushButton:pressed {
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="f2_toggle">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -428,7 +437,13 @@ QPushButton:pressed {
                <property name="minimumSize">
                 <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -531,7 +546,7 @@ QPushButton:pressed {
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="f3_toggle">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -539,7 +554,13 @@ QPushButton:pressed {
                <property name="minimumSize">
                 <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -642,7 +663,7 @@ QPushButton:pressed {
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="f4_toggle">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -650,7 +671,13 @@ QPushButton:pressed {
                <property name="minimumSize">
                 <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -753,7 +780,7 @@ QPushButton:pressed {
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="f5_toggle">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -761,7 +788,13 @@ QPushButton:pressed {
                <property name="minimumSize">
                 <size>
                  <width>100</width>
-                 <height>0</height>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">

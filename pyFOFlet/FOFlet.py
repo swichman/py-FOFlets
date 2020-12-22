@@ -12,16 +12,18 @@ class impulse:
         self.freq = Fi
 
 class FOFlet:
-    def __init__(self):
-        self.beta = 0
-        self.alpha = 0
-        self.BW = 0
-        self.k1 = 0
-        self.Fc = 0
-        self.Fs = 44100
+    # initialize class with these values
+    def __init__(self, BW=60, k1=0.002, Fc=640, Fs=44100):
+        self.beta = np.pi/k1
+        self.alpha = BW*np.pi
+        self.BW = BW
+        self.k1 = k1
+        self.Fc = Fc
+        self.Fs = Fs
         self.Ts = 1/self.Fs
         self.FOFlet = []
 
+    # functions to set values individually
     def set_beta(self, beta_val):
         self.beta = beta_val
     def set_alpha(self, alpha_val):
@@ -35,15 +37,8 @@ class FOFlet:
     def set_Fs(self, Fs_val):
         self.Fs = Fs_val
 
+    # Generate new FOFlet from each impulse time.
     def update_FOFlet(self, Fs, impulse):
-    #def update_FOFlet(self, alpha, BW, k1, Fc, Fs, impulse):
-        # self.set_Fs(Fs)
-        # self.set_k1(k1*self.Fs)
-        # self.set_beta(np.pi/self.k1)
-        # self.set_alpha(alpha)
-        # self.set_BW(BW)
-        # self.set_Fc(Fc)
-
         tmp = []
         for i in range(0,int(self.k1)):
             attack_env = .5 * ( 1 - np.cos(self.beta*i) )
